@@ -124,3 +124,23 @@ ScrollReveal({
   #contact header`
 );
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Check for saved user preference
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme) {
+  document.body.classList.add(currentTheme);
+  toggle.checked = currentTheme === "light-mode";
+}
+
+// Toggle theme and save user preference
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light-mode");
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark-mode");
+  }
+});
+
+});
